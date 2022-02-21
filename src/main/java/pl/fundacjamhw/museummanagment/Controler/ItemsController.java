@@ -2,10 +2,10 @@ package pl.fundacjamhw.museummanagment.Controler;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import pl.fundacjamhw.museummanagment.Model.Items;
+import org.hibernate.cache.spi.support.AbstractReadWriteAccess;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import pl.fundacjamhw.museummanagment.Model.Item;
 import pl.fundacjamhw.museummanagment.Service.ItemService;
 
 import java.util.List;
@@ -20,8 +20,14 @@ public class ItemsController{
 
 
     @GetMapping("/items")
-    public List<Items> getItems() {
+    public List<Item> getItems() {
         return itemService.getItemsList();
+    }
+
+    @PostMapping("/items")
+    public ResponseEntity<Item> addNewItems(@RequestBody Item item){
+        return ResponseEntity.of(itemService.addNewItems(item));
+
     }
 
 }

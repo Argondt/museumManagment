@@ -21,11 +21,11 @@ public class getItems {
     private Long id;
     @ManyToOne
     @JoinColumn(name = "items_id")
-    private Items items;
+    private Item item;
     @ManyToOne
     @JoinColumn(name = "users_id")
-    private Users users;
-    private String item;
+    private User user;
+    private String itemName;
     private boolean taken;
     private Integer takenSize;
 
