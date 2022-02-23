@@ -19,12 +19,12 @@ public class ItemsController{
     private final ItemService itemService;
 
 
-    @GetMapping("/items")
+    @GetMapping("/item")
     public List<Item> getItems() {
         return itemService.getItemsList();
     }
 
-    @PostMapping("/items")
+    @PostMapping("/item")
     public ResponseEntity<Item> addNewItems(@RequestBody Item item){
         return ResponseEntity.of(itemService.addNewItems(item));
 

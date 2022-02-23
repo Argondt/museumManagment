@@ -4,10 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+
+import javax.persistence.*;
 
 
 @Entity
@@ -15,9 +13,10 @@ import javax.persistence.ManyToOne;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class getItems {
+public class ItemCollect {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
     @JoinColumn(name = "items_id")
@@ -26,7 +25,14 @@ public class getItems {
     @JoinColumn(name = "users_id")
     private User user;
     private String itemName;
-    private boolean taken;
     private Integer takenSize;
+    public ItemCollect(Item item, User user, String itemName, Integer takenSize) {
+        this.item = item;
+        this.user = user;
+        this.itemName = itemName;
+        this.takenSize = takenSize;
+    }
+
+
 
 }
