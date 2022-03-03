@@ -8,5 +8,6 @@ import pl.fundacjamhw.museummanagment.Model.Item;
 public interface ItemsRepo extends JpaRepository<Item,Long> {
     Item findItemsById(Long id);
     Item getItemById(Long id);
-    Item 
+
+
 }

@@ -24,13 +24,11 @@ public class ItemCollect {
     @ManyToOne
     @JoinColumn(name = "users_id")
     private User user;
-    private String itemName;
-    private Integer takenSize;
-    public ItemCollect(Item item, User user, String itemName, Integer takenSize) {
+    private Integer numberOfItemsTaken;
+    public ItemCollect(Item item, User user, Integer numberOfItemsTaken) {
         this.item = item;
         this.user = user;
-        this.itemName = itemName;
-        this.takenSize = takenSize;
+        this.numberOfItemsTaken = numberOfItemsTaken;
     }
 
 
