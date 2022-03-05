@@ -34,7 +34,6 @@ public class UserService {
         user.setLastName(user.getLastName());
         user.setUsername(user.getUsername());
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-
         return  Optional.of(userRepo.save(user));
 
     }

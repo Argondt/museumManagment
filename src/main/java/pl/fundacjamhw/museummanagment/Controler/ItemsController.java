@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.cache.spi.support.AbstractReadWriteAccess;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 import pl.fundacjamhw.museummanagment.Model.Item;
 import pl.fundacjamhw.museummanagment.Service.ItemService;
@@ -20,7 +22,7 @@ public class ItemsController{
 
 
     @GetMapping("/item")
-    public List<Item> getItems() {
+    public List<Item> getItems(@AuthenticationPrincipal UsernamePasswordAuthenticationToken user) {
         return itemService.getItemsList();
     }
 

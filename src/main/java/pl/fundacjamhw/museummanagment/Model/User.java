@@ -23,6 +23,7 @@ public class User {
 
     private String username;
 
+    private Boolean enabled;
     private String password;
     private String firstName;
     private String lastName;

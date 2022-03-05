@@ -22,7 +22,7 @@ public class UserController {
     public List<User> getItems() {
         return userService.getItemsList();
     }
-    @PostMapping("/user")
+    @PostMapping("/user" )
     public ResponseEntity<User> addNewItems(@RequestBody User user){
         return ResponseEntity.of(userService.addUser(user));
 
