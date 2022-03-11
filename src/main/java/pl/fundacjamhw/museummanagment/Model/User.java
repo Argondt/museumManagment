@@ -6,13 +6,13 @@ import lombok.NoArgsConstructor;
 
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Entity
 @Data
-@NoArgsConstructor
+
 @AllArgsConstructor
 public class User {
     @Id
@@ -23,10 +23,22 @@ public class User {
 
     private String username;
 
-    private Boolean enabled;
     private String password;
     private String firstName;
     private String lastName;
-
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles = new HashSet<>();
+    public User() {
+    }
+    public User(String username, String email, String password,String firstName,String lastName) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.firstName=firstName;
+        this.lastName=lastName;
+    }
 
 }
