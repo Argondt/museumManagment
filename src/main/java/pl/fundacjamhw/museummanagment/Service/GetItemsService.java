@@ -7,22 +7,23 @@ import pl.fundacjamhw.museummanagment.Model.Item;
 import pl.fundacjamhw.museummanagment.Model.ItemCollect;
 import pl.fundacjamhw.museummanagment.Model.User;
 import pl.fundacjamhw.museummanagment.Repository.ItemCollectionRepo;
-import pl.fundacjamhw.museummanagment.Repository.ItemsRepo;
 
 import java.util.List;
+import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 public class GetItemsService {
-    private final ItemCollectionRepo ItemCollectionRepo;
+    private final ItemCollectionRepo itemCollectionRepo;
     private final ItemService itemService;
     private final UserService userService;
 
 
     public List<ItemCollect> getItemsListList(){
-        return ItemCollectionRepo.findAll();
+        return itemCollectionRepo.findAll();
     }
 
     @Transactional
@@ -31,9 +32,13 @@ public class GetItemsService {
         itemCollect.setItem(item);
         User user = userService.getUserById(itemCollect.getUser().getId()).orElseThrow(NoSuchElementException::new);
         itemCollect.setUser(user);
-        return ItemCollectionRepo.save(itemCollect);
+        return itemCollectionRepo.save(itemCollect);
     }
     public Optional<ItemCollect> getItemFromMuseumById (Long id){
-        return  ItemCollectionRepo.findById(id);
+        return  itemCollectionRepo.findById(id);
+    }
+
+    public List<ItemCollect> listItemFromMuseumByUserId(Long userID){
+        return itemCollectionRepo.findByUser_Id(userID);
     }
 }

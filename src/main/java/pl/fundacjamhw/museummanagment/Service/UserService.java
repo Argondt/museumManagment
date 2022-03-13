@@ -4,11 +4,14 @@ import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import pl.fundacjamhw.museummanagment.Model.User;
+import pl.fundacjamhw.museummanagment.Repository.RoleRepository;
 import pl.fundacjamhw.museummanagment.Repository.UserRepo;
+import pl.fundacjamhw.museummanagment.Security.JwtUtils;
 
 import java.util.List;
 import java.util.Optional;
